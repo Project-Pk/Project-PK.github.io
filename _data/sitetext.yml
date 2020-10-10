@@ -82,7 +82,7 @@ clients:
     
 team:
     title: "OUR AMAZING TEAM"
-    text: "Lorem ipsum dolor sit amet consectetur."
+    text: Lorem ipsum dolor sit amet consectetur.
     subtext: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported.
     section: team
     people:
@@ -135,6 +135,3 @@ footer:
         icon: "fab fa-github"
       - url: https://instagram.com
         icon: "fab fa-instagram"
-
-
-# {{ site.data.sitetext.ex.ex | markdownify | default: example }}
