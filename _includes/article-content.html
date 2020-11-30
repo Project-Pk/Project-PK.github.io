@@ -1,0 +1,34 @@
+{% assign without-image = nil %}
+<!-- begin article -->
+<div class="article">
+  <div class="container">
+    <div class="article__wrapper">
+        {% if post.image %}
+          <a href="{{post.url | prepend: site.baseurl}}" class="article__image" style="background-image: url({{site.baseurl}}/images/{{post.image}})">
+          </a>
+        {% else %}
+          {% assign without-image = 'article-without-image' %}
+        {% endif %}
+        <div class="article__content {{ without-image }}">
+          <div class="article-tags">
+          {% if post.tags.size >= 1 %}
+            <div class="article-tags__box">
+              {% for tag in post.tags %}
+                <a href="{{ site.baseurl }}/tag/{{ tag }}" class="article__tag">{{ tag }}</a>
+              {% endfor %}
+            </div>
+          {% else %}
+          {% endif %}
+          </div>
+          <h2 class="article__title">How <span style="color:#ffd000">Pokke</span> Works</h2>
+          <h4 style="margin-top: 50px;">1. 토큰 받기!</h3>
+          <p>원하는 광고를 시청해 토큰을 적립하세요</p>
+          <h4>2. 갖고 싶은 상품을 <sapn style="color:#ffd000">Pokke</sapn>!</h3>
+          <p><span style="color:#ffd000">Pokke</span>로 게이지를 채워주세요</p>
+          <h4>3. 상품에 당첨!</h3>
+          <p>게이지가 가득 찰 때마다 상품이 와르르!</p>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- end article -->
