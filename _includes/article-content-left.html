@@ -18,11 +18,11 @@
           <p class="article__excerpt">명품부터 차까지 - 원하는 모든 상품, Pokke가 드립니다</p>
           <h4 style="margin-top: 30px;">Coming Soon!</h4>
           <div class="subscribe">
-          <form class="subscribe-form validate" action="https://formspree.io/f/{{ site.email }}"
-            method="POST" id="subscribe-form" name="subscribe-form" novalidate="novalidate">
+          <form class="subscribe-form validate" action="https://formspree.io/f/mknpodwo" method="POST" id="subscribe-form" novalidate="novalidate">
             <div class="subscribe-group">
-              <input class="subscribe__email required email" type="text" name="email" placeholder="Enter your email..." style="width: 70%;">
-              <input class="subscribe__button" type="submit" name="subscribe" value="런칭 알림 받기">
+              <div id="successSubscribe"></div>
+              <input class="subscribe__email required email" type="text" id="subscribe-mail" name="email" placeholder="Enter your email..." style="width: 70%;">
+              <input class="subscribe__button" type="submit" id="sendSubscribeMessageButton" name="subscribe" value="런칭 알림 받기">
             </div>
             
           </form>

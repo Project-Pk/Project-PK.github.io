@@ -8,7 +8,7 @@ $(function() {
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
       // get values from FORM
-	  var url = "https://formspree.io/" + "{{ site.email }}";
+	    var url = "https://formspree.io/f/mknpodwo";
       var name = $("input#name").val();
       var email = $("input#email").val();
       var phone = $("input#phone").val();
@@ -23,7 +23,7 @@ $(function() {
       $.ajax({
         url: url,
         type: "POST",
-	dataType: "json",      
+	      dataType: "json",      
         data: {
           name: name,
           phone: phone,
@@ -43,6 +43,9 @@ $(function() {
             .append('</div>');
           //clear all fields
           $('#contactForm').trigger("reset");
+          $("button.close").click(() => {
+            $('div.alert').remove();
+          });
         },
 		
         error: function() {
@@ -54,8 +57,74 @@ $(function() {
           $('#success > .alert-danger').append('</div>');
           //clear all fields
           $('#contactForm').trigger("reset");
+          $("button.close").click(() => {
+            $('div.alert').remove();
+          });
         },
 		
+        complete: function() {
+          setTimeout(function() {
+            $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
+          }, 1000);
+        }
+      });
+    },
+    filter: function() {
+      return $(this).is(":visible");
+    },
+  });
+
+  $("#subscribe-form input").jqBootstrapValidation({
+    preventSubmit: true,
+    submitError: function($form, event, errors) {
+      // additional error messages or events
+    },
+    submitSuccess: function($form, event) {
+      event.preventDefault(); // prevent default submit behaviour
+      // get values from FORM
+	    var url = "https://formspree.io/f/mknpodwo";
+      var email = $("input#subscribe-mail").val();
+      $this = $("#sendSubscribeMessageButton");
+      $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+      $.ajax({
+        url: url,
+        type: "POST",
+	      dataType: "json",      
+        data: {
+          email: email,
+        },
+        cache: false,
+        
+        success: function() {
+          // Success message
+          $('#successSubscribe').html("<div class='alert alert-success'>");
+          $('#successSubscribe > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+            .append("</button>");
+          $('#successSubscribe > .alert-success')
+            .append("<strong>Your message has been sent. </strong>");
+          $('#successSubscribe > .alert-success')
+            .append('</div>');
+          //clear all fields
+          $('#subscribe-form').trigger("reset");
+          $("button.close").click(() => {
+            $('div.alert').remove();
+          });
+        },
+        
+        error: function() {
+          // Fail message
+          $('#successSubscribe').html("<div class='alert alert-danger'>");
+          $('#successSubscribe > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+            .append("</button>");
+          $('#successSubscribe > .alert-danger').append($("<strong>").text("Sorry, it seems that my mail server is not responding. Please try again later!"));
+          $('#successSubscribe > .alert-danger').append('</div>');
+          //clear all fields
+          $('#subscribe-form').trigger("reset");
+          $("button.close").click(() => {
+            $('div.alert').remove();
+          });
+        },
+        
         complete: function() {
           setTimeout(function() {
             $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
