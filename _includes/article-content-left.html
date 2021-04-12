@@ -8,39 +8,29 @@
              data-aos-easing="linear"
              data-aos-duration="1500"
         >
-          <div class="article-tags">
-          {% if post.tags.size >= 1 %}
-            <div class="article-tags__box">
-              {% for tag in post.tags %}
-                <a href="" class="article__tag">{{ tag }}</a>
-              {% endfor %}
-            </div>
-          {% else %}
-          {% endif %}
-          </div>
           <h2 class="article__title">{{post.title}}</h2>
-          <p class="article__excerpt">명품부터 차까지 - 원하는 모든 상품, Pokke가 드립니다</p>
+          <p class="article__excerpt">명품부터 차까지 - 갖고 싶던 인생템, Pokke가 드립니다</p>
           <h4 style="margin-top: 30px;">Coming Soon!</h4>
           <div class="subscribe">
-          <form class="subscribe-form validate" action="https://formspree.io/f/mknpodwo" method="POST" id="subscribe-form" novalidate="novalidate">
-            <div class="subscribe-group">
-              <div id="successSubscribe"></div>
-              <input class="subscribe__email required email" type="text" id="subscribe-mail" name="email" placeholder="Enter your email..." style="width: 70%;">
-              <input class="subscribe__button" type="submit" id="sendSubscribeMessageButton" name="subscribe" value="런칭 알림 받기">
-            </div>
-            
-          </form>
-        </div>
+            <form class="subscribe-form validate" action="https://formspree.io/f/mknpodwo" method="POST" id="subscribe-form" novalidate="novalidate">
+              <div class="subscribe-group">
+                <div id="successSubscribe"></div>
+                <input class="subscribe__email required email" type="text" id="subscribe-mail" name="email" placeholder="Enter your email..." style="width: 70%;">
+                <input class="subscribe__button" type="submit" id="sendSubscribeMessageButton" name="subscribe" value="런칭 알림 받기">
+              </div>
+            </form>
+          </div>
         </div>
 
         {% if post.image %}
-          <a href="{{post.url | prepend: site.baseurl}}" class="article__image" style="background-image: url({{site.baseurl}}/images/{{post.image}})">
-          </a>
+          <div class="article__image" style="background-image:url({{site.baseurl}}/images/background1.svg); max-height: 600px;">
+            <img src="/images/page1.png"/>
+          </div>
         {% else %}
           {% assign without-image = 'article-without-image' %}
         {% endif %}
 
-      </div>
+    </div>
   </div>
 </div>
 <!-- end article -->
